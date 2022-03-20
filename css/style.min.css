@@ -1,4 +1,3 @@
-@charset "UTF-8";
 @font-face {
   font-family: "Roboto";
   font-display: swap;
@@ -315,6 +314,17 @@ body._lock {
   }
 }
 
+@media (max-width: 991.98px) {
+  .main__icon {
+    left: 20px;
+    z-index: 5;
+    display: block;
+    position: relative;
+    width: 30px;
+    height: 18px;
+    cursor: pointer;
+  }
+}
 .main__btn {
   display: flex;
   align-items: center;
@@ -331,8 +341,19 @@ body._lock {
     display: none;
   }
 }
+.main__body {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  padding: 100px 0px 30px 0px;
+  transition: left 0.3s ease 0s;
+  overflow: auto;
+}
 @media (min-width: 991.98px) {
-  .main__sub-list {
+  .main__list {
     position: relative;
     z-index: 5;
     display: grid;
@@ -343,88 +364,90 @@ body._lock {
   }
 }
 @media (min-width: 991.98px) and (max-width: 1296px) {
-  .main__sub-list {
+  .main__list {
     gap: calc(15px + 17 * ((100vw - 320px) / 976));
   }
 }
-
-#main__toggle {
-  opacity: 0;
+.main__link {
+  font-style: 24px;
 }
 
 @media (max-width: 991.98px) {
-  .main__btn > span,
-.main__btn > span::before,
-.main__btn > span::after {
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    background-color: #616161;
-  }
-
-  .main__btn > span::before {
-    content: "";
-    top: -8px;
-  }
-
-  .main__btn > span::after {
-    content: "";
-    top: 8px;
-  }
-
-  .main__sub-list {
-    display: block;
-    position: fixed;
-    visibility: hidden;
-    top: 0;
-    left: -100%;
-    width: 300px;
-    height: 100%;
-    margin: 0;
-    padding: 80px 0;
-    list-style: none;
-    text-align: center;
-    background-color: #021a2bc0;
-    box-shadow: 1px 0px 6px rgba(0, 0, 0, 0.2);
-  }
-
-  /* элементы меню */
-  .main__sub-item {
-    display: block;
-    padding: 12px 24px;
-    color: #333;
-    font-family: "Roboto", sans-serif;
-    font-size: 20px;
-    font-weight: 600;
-    text-decoration: none;
-  }
-
-  .main__sub-item:hover {
-    background-color: #1b96ca;
-  }
-
-  #main__toggle:checked ~ .main__btn > span {
-    transform: rotate(45deg);
-    transition: all 0.3s ease 0s;
-  }
-
-  #main__toggle:checked ~ .main__btn > span::before {
-    top: 0;
-    transform: rotate(0);
-    transition: all 0.3s ease 0s;
-  }
-
-  #main__toggle:checked ~ .main__btn > span::after {
-    top: 0;
-    transform: rotate(90deg);
-    transition: all 0.3s ease 0s;
-  }
-
-  #main__toggle:checked ~ .main__sub-list {
-    visibility: visible;
+  .main__icon span,
+.main__icon::before,
+.main__icon::after {
     left: 0;
+    position: absolute;
+    height: 10%;
+    width: 100%;
     transition: all 0.3s ease 0s;
+    background-color: #fff;
+  }
+
+  .main__icon::before,
+.main__icon::after {
+    content: "";
+  }
+
+  .main__icon::before {
+    /*  */
+    top: 0;
+  }
+
+  .main__icon::after {
+    /*  */
+    bottom: 0;
+  }
+
+  .main__icon span {
+    /*  */
+    top: 50%;
+    transform: scale(1) translate(0px, -50%);
+  }
+
+  .main__icon._active span {
+    transform: scale(0) translate(0px, -50%);
+  }
+
+  .main__icon._active::before {
+    top: 50%;
+    transform: rotate(-45deg) translate(0px, -50%);
+  }
+
+  .main__icon._active::after {
+    bottom: 50%;
+    transform: rotate(45deg) translate(0px, 50%);
+  }
+
+  .main__body._active {
+    /*  */
+    left: 0;
+  }
+
+  .main__list > li {
+    /*  */
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+  }
+
+  .main__list > li:last-child {
+    /*  */
+    /* margin-bottom: 20px; */
+  }
+
+  .main__list > li._active .menu__sub-list {
+    /*  */
+    display: block;
+  }
+
+  .main__list {
+    padding: 0px 20px;
+  }
+
+  .main__link {
+    /*  */
+    font-style: 24px;
+    /* margin-bottom: 30px; */
   }
 }
 .footer {
@@ -616,11 +639,16 @@ body._lock {
 }
 @media (max-width: 1296px) {
   .main-index__body {
-    padding-top: calc(90px + 30 * ((100vw - 320px) / 976));
+    padding-top: calc(60px + 60 * ((100vw - 320px) / 976));
   }
 }
 .main-index__label {
   margin-top: 10vh;
+}
+@media (max-width: 991.98px) {
+  .main-index__label {
+    margin-top: 0;
+  }
 }
 .main-index__last-line {
   position: absolute;
@@ -645,7 +673,7 @@ body._lock {
 }
 @media (max-width: 1296px) {
   .index-label {
-    top: calc(10px + 190 * ((100vw - 320px) / 976));
+    top: calc(0px + 200 * ((100vw - 320px) / 976));
   }
 }
 .index-label__text {
