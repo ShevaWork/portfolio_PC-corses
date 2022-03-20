@@ -628,7 +628,12 @@ body._lock {
   background-image: url("../img/main-screen__bgc.jpg");
   background-size: cover;
   background-position: center center;
-  padding-top: -40px;
+  margin-bottom: 130px;
+}
+@media (max-width: 1296px) {
+  .main-index {
+    margin-bottom: calc(60px + 70 * ((100vw - 320px) / 976));
+  }
 }
 .main-index__container {
   color: white;
